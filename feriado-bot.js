@@ -31,7 +31,29 @@ function getFeriados() {
     return feriados;
 }
 
+// Retorna o próximo feriado
+function proximoFeriado() {
+    let feriados = getFeriados();
+    let prox = feriados[0];
+    if (!prox)
+        return 'Não há mais feriados este ano :(';
+
+    let str = (`<code>${prox.nome}</code>\n`);
+    str += (`<i>${prox.tipo} (${prox.data})</i>\n`);
+    str += (`<b>${prox.diaSemana}</b>\n`);
+    str += (`<b>Falta(m) ${prox.faltam} dia(s)</b>\n`);
+
+    if (!prox.isDiaUtil) {
+        feriados = feriados.filter((val, i) => val.isDiaUtil);
+        if (feriados.length) {
+            str += (`\nO próximo feriado em dia útil é daqui a ${feriados[0].faltam} dia(s), e cai na ${feriados[0].diaSemana}`);
+        }
+    }
+    return str;
+}
+
 // Exportações:
 module.exports = {
     getFeriados: getFeriados,
+    proximoFeriado: proximoFeriado
 }
