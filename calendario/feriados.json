@@ -1,0 +1,42 @@
+[
+    {
+        "nome": "Independência do Brasil",
+        "data": "07/09/2019",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Nossa Senhora Aparecida",
+        "data": "12/10/2019",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Recesso Escolar e do Corpo Docente",
+        "data": "14/10/2019",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Recesso Escolar e do Corpo Docente",
+        "data": "15/10/2019",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Finados",
+        "data": "02/11/2019",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Proclamação da República",
+        "data": "15/11/2019",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Recesso escolar, Corpo Docente e Administrativo",
+        "data": "16/11/2019",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Recesso do Corpo Docente",
+        "data": "21/12/2019",
+        "tipo": "Recesso"
+    }
+]

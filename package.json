@@ -1,0 +1,29 @@
+{
+  "name": "feriado-bot",
+  "version": "1.0.0",
+  "description": "Bot de Feriados para o Telegram",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lbltavares/feriado-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "feriados",
+    "PUC",
+    "feriado"
+  ],
+  "author": "Lucas Laborne",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/lbltavares/feriado-bot/issues"
+  },
+  "homepage": "https://github.com/lbltavares/feriado-bot#readme",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "node-telegram-bot-api": "^0.30.0"
+  }
+}
