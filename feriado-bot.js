@@ -31,7 +31,7 @@ function getFeriados() {
     return feriados;
 }
 
-// Retorna o próximo feriado
+// Responde quando será o próximo feriado
 function proximoFeriado() {
     let feriados = getFeriados();
     let prox = feriados[0];
