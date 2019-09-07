@@ -15,9 +15,9 @@ moment.locale('pt-BR');
 // Obtem uma lista ordenada com os próximos feriados
 function getFeriados() {
     let feriados = JSON.parse(fs.readFileSync('./calendario/feriados.json'));
-    let hoje = moment();
+    let hoje = moment().subtract(3, 'hours');
     // Remove as datas que já passaram:
-    feriados = feriados.filter(item => hoje.diff(moment(item.data, 'DD-MM-YYYY')) < 0);
+    feriados = feriados.filter(item => (moment(item.data, 'DD-MM-YYYY') - hoje) > 0);
     // Ordena os feriados:
     feriados = feriados.sort((a, b) => moment(a.data, 'DD-MM-YYYY') - moment(b.data, 'DD-MM-YYYY'));
 
