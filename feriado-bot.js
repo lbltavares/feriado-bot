@@ -38,7 +38,13 @@ function proximoFeriado() {
     if (!prox)
         return 'Não há mais feriados este ano :(';
 
-    let str = (`<code>${prox.nome}</code>\n`);
+    let str = '';
+    let d = new Date();
+    if(d.getDate() == 31 && d.getMonth()+1 == 10 && d.getFullYear() == 2019)
+        str += `<code>\u{1F383}\u{1F47B}\u{1F383} ${prox.nome} \u{1F383}\u{1F47B}\u{1F383}</code>\n`;
+    else
+        str += `<code>${prox.nome}</code>\n`;
+
     str += (`<i>${prox.tipo} (${prox.data})</i>\n`);
     str += (`<b>${prox.diaSemana}</b>\n`);
     str += (`<b>Falta(m) ${prox.faltam} dia(s)</b>\n`);
