@@ -16,10 +16,19 @@ const { proximoFeriado } = require('./feriado-bot');
 const BOT_TOKEN = process.env.BOT_TOKEN;
 let bot = new Telegram(BOT_TOKEN, { polling: true });
 
-// Ao receber uma mensagem:
+// Ao receber uma mensagem
 bot.on('message', async (msg) => {
+
+    // Remetente:
     const from = msg.from;
-    console.log(`Mensagem recebida de ${from.first_name} ${from.last_name} (${from.username}:${from.id})`);
+
+    // Log:
+    console.log(`Mensagem recebida de ${from.first_name} ${from.last_name} (${from.username}: ${from.id}): ${msg.text}`);
+
+    // Ignora mensagens antigas (limite: 1 minuto)
+    let limite = 60; // segs
+    if (Math.round((new Date()).getTime() / 1000) - msg.date > limite)
+        return;
 
     // Envia o proximo feriado
     if (msg.text == '/proximoferiado' || msg.text == '/proximoferiado@feriado_bot')
@@ -27,6 +36,6 @@ bot.on('message', async (msg) => {
 
     // Envia o calendario
     else if (msg.text == '/calendario' || msg.text == '/calendario@feriado_bot')
-        bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg');
+        bot.sendPhoto(msg.chat.id, './calendario/calendario-current.jpg');
 
 });

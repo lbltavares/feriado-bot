@@ -13,10 +13,13 @@ moment.locale('pt-BR');
 
 // Obtem uma lista ordenada com os próximos feriados
 function getFeriados() {
+
     let feriados = JSON.parse(fs.readFileSync('./calendario/feriados.json'));
     let hoje = moment().subtract(3, 'hours');
+
     // Remove as datas que já passaram:
     feriados = feriados.filter(item => (moment(item.data, 'DD-MM-YYYY') - hoje) > 0);
+
     // Ordena os feriados:
     feriados = feriados.sort((a, b) => moment(a.data, 'DD-MM-YYYY') - moment(b.data, 'DD-MM-YYYY'));
 
@@ -32,14 +35,22 @@ function getFeriados() {
 
 // Responde quando será o próximo feriado
 function proximoFeriado() {
+
+    // Obtem um array json com os proximos feriados
     let feriados = getFeriados();
-    let prox = feriados[0];
-    if (!prox)
+
+    // Se não houver mais feriados:
+    if (!feriados)
         return 'Não há mais feriados este ano :(';
 
+    // Obtem o próximo feriado:
+    let prox = feriados[0];
+
+    // Monta a resposta formatada:
     let str = '';
     let d = new Date();
-    if(d.getDate() == 31 && d.getMonth()+1 == 10 && d.getFullYear() == 2019)
+    // Easter egg(s):
+    if (d.getDate() == 31 && d.getMonth() + 1 == 10 && d.getFullYear() == 2019)
         str += `<code>\u{1F383}\u{1F47B}\u{1F383} ${prox.nome} \u{1F383}\u{1F47B}\u{1F383}</code>\n`;
     else
         str += `<code>${prox.nome}</code>\n`;
@@ -48,6 +59,7 @@ function proximoFeriado() {
     str += (`<b>${prox.diaSemana}</b>\n`);
     str += (`<b>Falta(m) ${prox.faltam} dia(s)</b>\n`);
 
+    // Se cair no sabado, obtem e exibe o proximo feriado em dia util:
     if (!prox.isDiaUtil) {
         feriados = feriados.filter((val, i) => val.isDiaUtil);
         if (feriados.length) {
@@ -57,8 +69,5 @@ function proximoFeriado() {
     return str;
 }
 
-// Exportações:
-module.exports = {
-    getFeriados: getFeriados,
-    proximoFeriado: proximoFeriado
-}
+// Exports:
+module.exports = { getFeriados, proximoFeriado };
