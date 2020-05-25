@@ -47,10 +47,7 @@ bot.on('message', async (msg) => {
 
 // Retorna o calendario em formato json
 app.get('/', (req, res, next) => {
-    res.status(200).json({
-        feriados: feriados,
-        proximoFeriado: getFeriados()
-    });
+    res.status(200).json(getFeriados());
 });
 
 app.listen(PORT, () => {
