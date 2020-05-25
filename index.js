@@ -16,7 +16,7 @@ const { proximoFeriado } = require('./feriado-bot');
 const BOT_TOKEN = process.env.BOT_TOKEN;
 let bot = new Telegram(BOT_TOKEN, { polling: true });
 
-let ultimoCalendario, ultimoCalendarioId;
+let ultimoCalendario = {};
 
 // Ao receber uma mensagem
 bot.on('message', async (msg) => {
@@ -38,12 +38,17 @@ bot.on('message', async (msg) => {
 
     // Envia o calendario
     else if (msg.text == '/calendario' || msg.text == '/calendario@feriado_bot') {
-        if (!ultimoCalendario || (msg.date - ultimoCalendario) > 10) {
-            ultimoCalendario = msg.date;
+
+        // Anti-spam: se receber outro "/calendario" em menos de 10 segundos,
+        // responder com quote para a ultimo calendario:
+        if (!ultimoCalendario.date || (msg.date - ultimoCalendario.date) > 10) {
             bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg')
-                .then(m => ultimoCalendarioId = m.message_id);
+                .then(m => {
+                    ultimoCalendario.id = m.message_id;
+                    ultimoCalendario.date = msg.date;
+                });
         } else {
-            bot.sendMessage(msg.chat.id, '\u{1F446}', { reply_to_message_id: ultimoCalendarioId });
+            bot.sendMessage(msg.chat.id, '\u{1F446}', { reply_to_message_id: ultimoCalendario.id });
         }
     }
 
