@@ -11,20 +11,15 @@
  */
 
 const Telegram = require('node-telegram-bot-api');
+const express = require('express');
+const app = express();
 const { proximoFeriado } = require('./feriado-bot');
 
-const HOST = '0.0.0.0';
 const PORT = process.env.PORT || 443;
 
 // Bot do Telegram:
 const BOT_TOKEN = process.env.BOT_TOKEN;
-let bot = new Telegram(BOT_TOKEN, {
-    polling: true,
-    webHook: {
-        host: HOST,
-        port: PORT
-    }
-});
+let bot = new Telegram(BOT_TOKEN, { polling: true });
 
 bot.setWebHook(URL)
 
@@ -51,3 +46,8 @@ bot.on('message', async (msg) => {
         bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg');
 
 });
+
+
+app.listen(PORT, () => {
+    console.log(`Escutando na porta ${PORT}`);
+})
