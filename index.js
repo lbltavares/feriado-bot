@@ -14,13 +14,8 @@ const { proximoFeriado } = require('./feriado-bot');
 
 // Bot do Telegram:
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const PUC_ID = -1001173402919; // Restringe o bot para funcionar somente no grupo da PUC
+// const PUC_ID = -1001173402919; // Restringe o bot para funcionar somente no grupo da PUC
 let bot = new Telegram(BOT_TOKEN, { polling: true });
-
-let ultimoCalendario = {
-    /**date: data da mensagem */
-    /**id: id da mensagem */
-};
 
 // Ao receber uma mensagem
 bot.on('message', async (msg) => {
@@ -36,30 +31,18 @@ bot.on('message', async (msg) => {
     if (Math.round((new Date()).getTime() / 1000) - msg.date > limite)
         return;
 
-    // Ignora mensagens que não sejam do grupo da PUC:
-    if (!msg.chat || !msg.chat.id || msg.chat.id != PUC_ID) {
-        bot.sendMessage(msg.chat.id, 'Por favor, converse comigo somente dentro no grupo da PUC. Se quiser fazer o seu próprio feriado-bot, pode copiar o meu código: https://github.com/lbltavares/feriado-bot');
-        return;
-    }
+    // // Ignora mensagens que não sejam do grupo da PUC:
+    // if (!msg.chat || !msg.chat.id || msg.chat.id != PUC_ID) {
+    //     bot.sendMessage(msg.chat.id, 'Por favor, converse comigo somente dentro no grupo da PUC. Se quiser fazer o seu próprio feriado-bot, pode copiar o meu código: https://github.com/lbltavares/feriado-bot');
+    //     return;
+    // }
 
     // Envia o proximo feriado
     if (msg.text == '/proximoferiado' || msg.text == '/proximoferiado@feriado_bot')
         bot.sendMessage(msg.chat.id, proximoFeriado(), { parse_mode: 'HTML' });
 
     // Envia o calendario
-    else if (msg.text == '/calendario' || msg.text == '/calendario@feriado_bot') {
-
-        // Anti-spam: se receber outro "/calendario" em menos de 10 segundos,
-        // responder com quote para a ultimo calendario:
-        if (!ultimoCalendario.date || (msg.date - ultimoCalendario.date) > 10) {
-            bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg')
-                .then(m => {
-                    ultimoCalendario.id = m.message_id;
-                    ultimoCalendario.date = m.date;
-                });
-        } else {
-            bot.sendMessage(msg.chat.id, '\u{1F446}', { reply_to_message_id: ultimoCalendario.id });
-        }
-    }
+    else if (msg.text == '/calendario' || msg.text == '/calendario@feriado_bot')
+        bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg');
 
 });
