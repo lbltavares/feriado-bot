@@ -14,6 +14,7 @@ const Telegram = require('node-telegram-bot-api');
 const express = require('express');
 const app = express(); // Necessario p/ o heroku
 const { proximoFeriado } = require('./feriado-bot');
+const fs = require('fs');
 
 const PORT = process.env.PORT || 443;
 
@@ -45,6 +46,9 @@ bot.on('message', async (msg) => {
 
 });
 
+app.get('/', (req, res, next) => {
+    res.status(200).json(JSON.parse(fs.readFileSync('./calendario/feriados.json')));
+});
 
 app.listen(PORT, () => {
     console.log(`Escutando na porta ${PORT}`);
