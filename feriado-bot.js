@@ -3,7 +3,6 @@
  * Descrição: Módulo para obter a lista de feriados, calcular
  * a quantidade de dias, etc...
  * 
- * KEEP IT SIMPLE, STUPID !!!
  * 
  */
 
