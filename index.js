@@ -12,7 +12,7 @@
 
 const Telegram = require('node-telegram-bot-api');
 const express = require('express');
-const app = express();
+const app = express(); // Necessario p/ o heroku
 const { proximoFeriado } = require('./feriado-bot');
 
 const PORT = process.env.PORT || 443;
@@ -20,8 +20,6 @@ const PORT = process.env.PORT || 443;
 // Bot do Telegram:
 const BOT_TOKEN = process.env.BOT_TOKEN;
 let bot = new Telegram(BOT_TOKEN, { polling: true });
-
-bot.setWebHook(URL)
 
 // Ao receber uma mensagem
 bot.on('message', async (msg) => {
