@@ -55,7 +55,7 @@ bot.on('message', async (msg) => {
             bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg')
                 .then(m => {
                     ultimoCalendario.id = m.message_id;
-                    ultimoCalendario.date = msg.date;
+                    ultimoCalendario.date = m.date;
                 });
         } else {
             bot.sendMessage(msg.chat.id, '\u{1F446}', { reply_to_message_id: ultimoCalendario.id });
