@@ -13,7 +13,7 @@
 const Telegram = require('node-telegram-bot-api');
 const { proximoFeriado } = require('./feriado-bot');
 
-const URL = '0.0.0.0';
+const HOST = '0.0.0.0';
 const PORT = process.env.PORT || 443;
 
 // Bot do Telegram:
