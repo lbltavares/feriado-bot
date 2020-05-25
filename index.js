@@ -13,8 +13,7 @@
 const Telegram = require('node-telegram-bot-api');
 const express = require('express');
 const app = express(); // Necessario p/ o heroku
-const { proximoFeriado } = require('./feriado-bot');
-const fs = require('fs');
+const { proximoFeriado, getFeriados } = require('./feriado-bot');
 
 const PORT = process.env.PORT || 443;
 
@@ -46,8 +45,12 @@ bot.on('message', async (msg) => {
 
 });
 
+// Retorna o calendario em formato json
 app.get('/', (req, res, next) => {
-    res.status(200).json(JSON.parse(fs.readFileSync('./calendario/feriados.json')));
+    res.status(200).json({
+        feriados: feriados,
+        proximoFeriado: getFeriados()
+    });
 });
 
 app.listen(PORT, () => {
