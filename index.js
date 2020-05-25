@@ -36,6 +36,6 @@ bot.on('message', async (msg) => {
 
     // Envia o calendario
     else if (msg.text == '/calendario' || msg.text == '/calendario@feriado_bot')
-        bot.sendPhoto(msg.chat.id, './calendario/calendario-current.jpg');
+        bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg');
 
 });
