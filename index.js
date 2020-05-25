@@ -1,21 +1,32 @@
 /**
  * Criado: Lucas Laborne
  * Descrição: Bot do Telegram para exibir o calendario e informar os
- * feriados da PUC em geral
+ * feriados da PUC
  * 
- * Regras:
- * > Use o arquivo /calendario/feriados.json para adicionar/modificar/remover feriados
- * > Coloque apenas feriados relacionados à PUC-MG e ao curso de Eng. de Software
+ * Use o arquivo /calendario/feriados.json para informar os feriados
+ * 
+ * Veja o calendario oficial aqui:
+ * https://www.pucminas.br/calendario/Paginas/default.aspx
  * 
  */
 
 const Telegram = require('node-telegram-bot-api');
 const { proximoFeriado } = require('./feriado-bot');
 
+const URL = '0.0.0.0';
+const PORT = process.env.PORT || 443;
+
 // Bot do Telegram:
 const BOT_TOKEN = process.env.BOT_TOKEN;
-// const PUC_ID = -1001173402919; // Restringe o bot para funcionar somente no grupo da PUC
-let bot = new Telegram(BOT_TOKEN, { polling: true });
+let bot = new Telegram(BOT_TOKEN, {
+    polling: true,
+    webHook: {
+        host: HOST,
+        port: PORT
+    }
+});
+
+bot.setWebHook(URL)
 
 // Ao receber uma mensagem
 bot.on('message', async (msg) => {
@@ -30,12 +41,6 @@ bot.on('message', async (msg) => {
     let limite = 60; // segs
     if (Math.round((new Date()).getTime() / 1000) - msg.date > limite)
         return;
-
-    // // Ignora mensagens que não sejam do grupo da PUC:
-    // if (!msg.chat || !msg.chat.id || msg.chat.id != PUC_ID) {
-    //     bot.sendMessage(msg.chat.id, 'Por favor, converse comigo somente dentro no grupo da PUC. Se quiser fazer o seu próprio feriado-bot, pode copiar o meu código: https://github.com/lbltavares/feriado-bot');
-    //     return;
-    // }
 
     // Envia o proximo feriado
     if (msg.text == '/proximoferiado' || msg.text == '/proximoferiado@feriado_bot')
