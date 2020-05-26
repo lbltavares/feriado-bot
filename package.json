@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/lbltavares/feriado-bot#readme",
   "dependencies": {
-    "express": "^4.17.1",
     "moment": "^2.24.0",
     "node-telegram-bot-api": "^0.30.0"
   },
