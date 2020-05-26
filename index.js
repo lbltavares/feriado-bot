@@ -11,11 +11,11 @@
  */
 
 const Telegram = require('node-telegram-bot-api');
-// const express = require('express');
-// const app = express(); // Necessario p/ o heroku
+const express = require('express');
+const app = express(); // Necessario p/ o heroku
 const { proximoFeriado, getFeriados } = require('./feriado-bot');
 
-// const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 443;
 
 // Bot do Telegram:
 const BOT_TOKEN = process.env.BOT_TOKEN;
@@ -45,11 +45,11 @@ bot.on('message', async (msg) => {
 
 });
 
-// // Retorna o calendario em formato json
-// app.get('/', (req, res, next) => {
-//     res.status(200).json(getFeriados());
-// });
+// Retorna o calendario em formato json
+app.get('/', (req, res, next) => {
+    res.status(200).json(getFeriados());
+});
 
-// app.listen(PORT, () => {
-//     console.log(`Escutando na porta ${PORT}`);
-// })
+app.listen(PORT, () => {
+    console.log(`Escutando na porta ${PORT}`);
+})
