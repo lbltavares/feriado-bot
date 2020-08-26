@@ -36,11 +36,11 @@ bot.on('message', async (msg) => {
         return;
 
     // Envia o proximo feriado
-    if (msg.text == '/proximoferiado' || msg.text == '/proximoferiado@feriado_bot')
+    if (msg.text === '/proximoferiado' || msg.text === '/proximoferiado@feriado_bot')
         bot.sendMessage(msg.chat.id, proximoFeriado(), { parse_mode: 'HTML' });
 
     // Envia o calendario
-    else if (msg.text == '/calendario' || msg.text == '/calendario@feriado_bot')
+    else if (msg.text === '/calendario' || msg.text === '/calendario@feriado_bot')
         bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg');
 
 });
