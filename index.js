@@ -2,12 +2,12 @@
  * Criado: Lucas Laborne
  * Descrição: Bot do Telegram para exibir o calendario e informar os
  * feriados da PUC
- * 
+ *
  * Use o arquivo /calendario/feriados.json para informar os feriados
- * 
+ *
  * Veja o calendario oficial aqui:
  * https://www.pucminas.br/calendario/Paginas/default.aspx
- * 
+ *
  */
 
 const Telegram = require('node-telegram-bot-api');
@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 443;
 
 // Bot do Telegram:
 const BOT_TOKEN = process.env.BOT_TOKEN;
-let bot = new Telegram(BOT_TOKEN, { polling: true });
+const bot = new Telegram(BOT_TOKEN, { polling: true });
 
 // Ao receber uma mensagem
 bot.on('message', async (msg) => {
@@ -31,7 +31,7 @@ bot.on('message', async (msg) => {
     console.log(`Mensagem recebida de ${from.first_name} ${from.last_name} (${from.username}: ${from.id}): ${msg.text}`);
 
     // Ignora mensagens antigas (limite: 1 minuto)
-    let limite = 60; // segs
+    const limite = 60; // segs
     if (Math.round((new Date()).getTime() / 1000) - msg.date > limite)
         return;
 
