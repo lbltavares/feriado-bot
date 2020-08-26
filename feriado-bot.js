@@ -1,9 +1,7 @@
 /**
  * Autor: Lucas Laborne
  * Descrição: Módulo para obter a lista de feriados, calcular
- * a quantidade de dias, etc...
- * 
- * 
+ * a quantidade de dias e calcular o próximo feriado.
  */
 
 const moment = require('moment');
