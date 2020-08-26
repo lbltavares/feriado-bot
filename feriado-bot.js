@@ -16,13 +16,14 @@ function getFeriados() {
     const hoje = moment().subtract(3, 'hours');
 
     // Remove as datas que já passaram:
-    feriados = feriados.filter(item => (moment(item.data, 'DD-MM-YYYY') - hoje) > 0);
+    const formato = 'DD-MM-YYYY';
+    feriados = feriados.filter(item => (moment(item.data, formato) - hoje) > 0);
 
     // Ordena os feriados:
-    feriados = feriados.sort((a, b) => moment(a.data, 'DD-MM-YYYY') - moment(b.data, 'DD-MM-YYYY'));
+    feriados = feriados.sort((a, b) => moment(a.data, formato) - moment(b.data, formato));
 
     feriados.forEach(f => {
-        const data = moment(f.data, 'DD-MM-YYYY');
+        const data = moment(f.data, formato);
         f.diaSemana = data.format('dddd');
         f.faltam = data.diff(hoje, 'days') + 1;
         f.isDiaUtil = !(f.diaSemana === 'Sábado' || f.diaSemana === 'Domingo');
