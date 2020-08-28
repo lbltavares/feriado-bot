@@ -6,5 +6,5 @@ Bot de feriados do Telegram para o curso de Engenharia de Software - PUC-MG ([Ca
 * [node-telegram-bot-api](https://www.npmjs.com/package/node-telegram-bot-api)
 * [moment.js](https://momentjs.com/)
 
-### SonarCloud:
+## SonarCloud:
 https://sonarcloud.io/dashboard?id=lbltavares_feriado-bot
