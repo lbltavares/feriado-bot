@@ -60,7 +60,7 @@ function proximoFeriado() {
 
     // Se cair no sabado, obtem e exibe o proximo feriado em dia util:
     if (!prox.isDiaUtil) {
-        feriados = feriados.filter((val, i) => val.isDiaUtil);
+        feriados = feriados.filter((val) => val.isDiaUtil);
         if (feriados.length) {
             str += (`\nO próximo feriado em dia útil é daqui a ${feriados[0].faltam} dia(s), e cai na ${feriados[0].diaSemana}`);
         }
