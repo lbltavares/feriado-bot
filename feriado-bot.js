@@ -12,7 +12,7 @@ moment.locale('pt-BR');
 // Obtem uma lista ordenada com os próximos feriados
 function getFeriados() {
 
-    let feriados = JSON.parse(fs.readFileSync('./calendario/feriados.json'));
+    let feriados = JSON.parse(fs.readFileSync('./assets/feriados.json'));
     const hoje = moment().subtract(3, 'hours');
 
     // Remove as datas que já passaram:

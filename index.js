@@ -1,5 +1,6 @@
 /**
  * Criado: Lucas Laborne
+ * Coautor: Arthur Branco
  * Descrição: Bot do Telegram para exibir o calendario e informar os
  * feriados da PUC
  *
@@ -39,6 +40,14 @@ bot.on('message', async (msg) => {
 
     // Envia o calendario
     else if (msg.text === '/calendario' || msg.text === '/calendario@feriado_bot')
-        bot.sendPhoto(msg.chat.id, './calendario/calendario.jpg');
+        bot.sendPhoto(msg.chat.id, './assets/calendario.png');
+    
+    // Envia a grade
+    else if (msg.text === '/grade' || msg.text === '/grade@feriado_bot')
+        bot.sendPhoto(msg.chat.id, './assets/grade.png');
+
+    // Envia a grade antiga
+    else if (msg.text === '/gradeantiga' || msg.text === '/gradeantiga@feriado_bot')
+        bot.sendPhoto(msg.chat.id, './assets/gradeantiga.png');
 
 });
