@@ -1,0 +1,72 @@
+[
+    {
+        "nome": "Carnaval - Sexta (Duração: 5 dias)",
+        "data": "18/02/2023",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Semana Santa - Quinta (Duração: 3 dias)",
+        "data": "06/04/2023",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Tiradentes - Sexta (Duração: 1 dia)",
+        "data": "21/04/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Dia Do Trabalho - Segunda (Duração: 1 dia)",
+        "data": "01/05/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Corpus Christi - Quinta (Duração: 1 dia) *Ultimo feriado do primeiro semestre*",
+        "data": "08/06/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Recesso do Corpo Docente - Semestre acaba dia 13 (Aulas voltam dia 01/08)",
+        "data": "14/07/2023",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Assunção de Nossa Senhora - Terça (Duração: 1 dia)",
+        "data": "15/08/2023",
+        "tipo": "Feriado Municipal"
+    },
+    {
+        "nome": "Independência do Brasil - Quinta (Duração: 1 dia)",
+        "data": "07/09/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Nossa Senhora Aparecida + antecipação do dia do Professor - Quinta (Duração: 3 dias)",
+        "data": "12/10/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Finados - Quinta (Duração: 1 dia)",
+        "data": "02/11/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Proclamação da República - Quarta (Duração: 1 dia)",
+        "data": "15/11/2023",
+        "tipo": "Feriado Nacional"
+    },
+    {
+        "nome": "Nossa Senhora da Conceição - Sexta (Duração: 1 dia) *Ultimo feriado do segundo semestre*",
+        "data": "08/12/2023",
+        "tipo": "Feriado Municipal"
+    },
+    {
+        "nome": "Recesso do Corpo Docente - Semestre acaba dia 21 (Aulas devem voltar dia 01/02/2024)",
+        "data": "24/12/2023",
+        "tipo": "Recesso"
+    },
+    {
+        "nome": "Natal!",
+        "data": "25/12/2023",
+        "tipo": "Feriado Nacional"
+    }
+]
