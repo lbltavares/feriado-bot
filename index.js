@@ -44,10 +44,10 @@ bot.on('message', async (msg) => {
     
     // Envia a grade
     else if (msg.text === '/grade' || msg.text === '/grade@feriado_bot')
-        bot.sendPhoto(msg.chat.id, './assets/grade.png');
+        bot.sendPhoto(msg.chat.id, './assets/grade.jpg');
 
     // Envia a grade antiga
     else if (msg.text === '/gradeantiga' || msg.text === '/gradeantiga@feriado_bot')
-        bot.sendPhoto(msg.chat.id, './assets/gradeantiga.png');
+        bot.sendPhoto(msg.chat.id, './assets/gradeantiga.jpg');
 
 });
